@@ -26,8 +26,9 @@
         <div class="double-bounce2"></div>
     </div>
 
+    <div></div>
     <!-- Pagination -->
-    <paginate
+    <paginate v-show="!loading && tracks.length > 0 && totalPages > 1"
         :page-count="totalPages"
         :click-handler="setPage"
         :page-range="3"
@@ -198,16 +199,15 @@ export default {
       loading: false,
       nothingFound: false,
       showModal: false,
-      maxMessageLength: 10,
+      maxMessageLength: 300,
       selectedTrack: null,
-      charactersLeft: 10,
+      charactersLeft: 300,
       ipTimeout: 0,
       trackTimeout: 0,
       trackRequestSuccessfull: false,
       trackRequestUnsuccessfull: false,
       name: "",
       message: "",
-      styleObject: {},
       trackImageFailover: ""
     };
   },
@@ -340,8 +340,7 @@ export default {
     // Create styles
     let rgbBg = this.hexToRgb(this.bgcolor);
     this.styleObject = {
-      "background-color": `rgba(${rgbBg.r}, ${rgbBg.g}, ${rgbBg.b}, ${this
-        .bgopacity})`
+      "background-color": `rgba(${rgbBg.r}, ${rgbBg.g}, ${rgbBg.b}, ${this.bgopacity})`
     };
 
     this.trackStyle = {
@@ -573,20 +572,25 @@ export default {
 }
 
 .modal-mask {
-  position: fixed;
+  position: absolute;
   z-index: 9998;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: table;
+  display: block;
   transition: opacity 0.3s ease;
 }
 
 .modal-wrapper {
-  display: table-cell;
+  /*display: table-cell;*/
   vertical-align: middle;
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%,-50%);
 }
 
 .modal-container {
