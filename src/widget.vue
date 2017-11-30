@@ -2,14 +2,8 @@
 
   <div class="container" v-bind:style="styleObject">
     <div class="actions_row">
-        <div class="act_back">
-            <a class="button" v-bind:style="btnStyle" v-show="page!=0" @click="prevPage()" align=left>{{translations[lang].back}}</a>
-        </div>
         <div class="act_search">
-            <input type="text" :placeholder="translations[lang].search" v-on:input="doSearch()" v-model="search_q">
-        </div>
-        <div class="act_next">
-            <a class="button" v-bind:style="btnStyle" v-show="page < (totalPages - 1)" @click="nextPage()">{{translations[lang].next}}</a>
+            <input type="text" :placeholder="translations[language].search" v-on:input="doSearch()" v-model="search_q">
         </div>
     </div>
 
@@ -17,7 +11,7 @@
     <div v-show="!nothingFound && !loading" class="track" v-for="track in tracks" :key="track.id" v-bind:style="trackStyle">
             <img v-bind:src="track.image" @click="requestTrack(track)" v-bind:style="trackImgStyle">
             <div class="meta" v-bind:style="metaStyle">{{ track.meta }}</div>
-            <a class="button" v-bind:style="btnStyle" @click="requestTrack(track)">{{translations[lang].requestTrack}}</a>
+            <a class="button" v-bind:style="btnStyle" @click="requestTrack(track)">{{translations[language].requestTrack}}</a>
     </div>
 
     <!-- Loading spinner -->
@@ -33,9 +27,9 @@
         :click-handler="setPage"
         :page-range="3"
         :margin-pages="2"
-        :prev-text="translations[lang].paginatePrev"
-        :next-text="translations[lang].paginateNext"
-        :container-class="'pagination'"
+        :prev-text="translations[language].paginatePrev"
+        :next-text="translations[language].paginateNext"
+        :container-class="'pagination-v-82963a40'"
         :page-class="'page-item'"
         :next-class="'page-item'"
         :prev-class="'page-item'"
@@ -43,8 +37,8 @@
         :no-li-surround="true">
     </paginate>
 
-    <div v-show="nothingFound">{{translations[lang].nothingFound}}</div>
-    <div v-show="loadError">{{translations[lang].loadError}}</div>
+    <div v-show="nothingFound">{{translations[language].nothingFound}}</div>
+    <div v-show="loadError">{{translations[language].loadError}}</div>
 
     <!-- Modal dialog -->
     <transition name="modal">
@@ -52,48 +46,47 @@
             <div class="modal-wrapper">
                 <div class="modal-container" v-bind:style="modalStyle">
 
-                    <div class="modal-header">{{translations[lang].trackrequestModalTitle}}</div>
+                    <div class="modal-header">{{translations[language].trackrequestModalTitle}}</div>
 
                     <div class="modal-body" v-if="selectedTrack">
                         <div class="track-info">
-                            <div><label>{{translations[lang].trackArtist}}:</label> {{selectedTrack.author}}</div>
-                            <div><label>{{translations[lang].trackTitle}}:</label> {{selectedTrack.title}}</div>
+                            <div><label>{{translations[language].trackArtist}}:</label> {{selectedTrack.author}}</div>
+                            <div><label>{{translations[language].trackTitle}}:</label> {{selectedTrack.title}}</div>
                         </div>
                         <div v-if="allow_person_and_message == 'true'" class="feedback">
-                            <div><label>{{translations[lang].listenerName}}:</label></div>
+                            <div><label>{{translations[language].listenerName}}:</label></div>
                             <div><input type="text" v-model="name" @input="updateCharactersLeftName()"></div>
-                            <div><label>{{translations[lang].listenerMessage}}:</label></div>
+                            <div><label>{{translations[language].listenerMessage}}:</label></div>
                             <div><textarea v-model="message"  @input="updateCharactersLeftMessage()"></textarea></div>
-                            <div>{{translations[lang].charactersLeft}}: {{charactersLeft}}</div>
+                            <div>{{translations[language].charactersLeft}}: {{charactersLeft}}</div>
                         </div>
                     </div>
 
                     <div v-if="trackRequestSuccessfull" class="modal-message success">
-                        {{translations[lang].trackRequestSuccessfull}}
+                        {{translations[language].trackRequestSuccessfull}}
                     </div>
 
-                    <div v-if="trackRequestUnsuccessfull" class="modal-message error">
-                        <div v-if="trackRequestFailure">
-                            {{translations[lang].trackRequestFailure}}
-                        </div>
-                        <div v-if="trackRequestBlocked">
+                    <div v-if="trackRequestUnsuccessfull && trackRequestFailure" class="modal-message error">
+                            {{translations[language].trackRequestFailure}}
+                    </div>
+
+                    <div v-if="trackRequestUnsuccessfull && trackRequestBlocked" class="modal-message error">
                             {{translations[lang].trackRequestBlocked}}
-                        </div>
-                        <div v-if="trackRequestBlockedIp">
-                            {{translations[lang].trackRequestBlockedIp}}
-                        </div>
                     </div>
 
+                    <div v-if="trackRequestUnsuccessfull && trackRequestBlockedIp" class="modal-message error">
+                            {{translations[language].trackRequestBlockedIp}}
+                    </div>
 
                     <div class="modal-footer">
-                        <button class="button" v-bind:style="btnStyle" v-if="selectedTrack" @click="sendRequest()">{{translations[lang].trackrequestModalSubmit}}</button>
+                        <button class="button" v-bind:style="btnStyle" v-if="selectedTrack" @click="sendRequest()">{{translations[language].trackrequestModalSubmit}}</button>
                         <button class="button" v-bind:style="btnStyle" @click="showModal=false;">
                             <span v-if="selectedTrack">
-                                {{translations[lang].trackrequestModalCancel}}
+                                {{translations[language].trackrequestModalCancel}}
                             </span>
 
                             <span v-if="!selectedTrack && (trackRequestSuccessfull || trackRequestUnsuccessfull)">
-                                {{translations[lang].trackrequestModalClose}}
+                                {{translations[language].trackrequestModalClose}}
                             </span>
 
                         </button>
@@ -126,12 +119,15 @@ export default {
     "meta_opacity",
     "button_color",
     "button_font_color",
+    "button_color_active",
     "button_font_size",
     "ordering",
     "allow_person_and_message",
     "modal_background_color",
     "modal_font_color",
-    "modal_background_opacity"
+    "modal_background_opacity",
+    'ipTimeout',
+    'trackTimeout',
   ],
   data() {
     return {
@@ -150,7 +146,7 @@ export default {
           trackrequestModalSubmit: "Submit",
           trackrequestModalCancel: "Cancel",
           trackArtist: "Artist",
-          trackArtist: "Title",
+          trackTitle: "Title",
           listenerName: "Your name",
           listenerMessage: "Shoutout",
           charactersLeft: "Characters left",
@@ -202,16 +198,21 @@ export default {
       maxMessageLength: 300,
       selectedTrack: null,
       charactersLeft: 300,
-      ipTimeout: 0,
-      trackTimeout: 0,
       trackRequestSuccessfull: false,
       trackRequestUnsuccessfull: false,
       name: "",
       message: "",
+      language: "en",
       trackImageFailover: ""
     };
   },
+  mounted() {
+        window.sc_vueTrackRequestWidget = this;
+  },
   methods: {
+    setLang(language){
+        this.language = language;
+    },
     hexToRgb: function(hex) {
       var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
       return result
@@ -231,7 +232,9 @@ export default {
         server_id: this.serverId,
         person: this.name,
         message: this.message,
-        music_id: this.selectedTrack.id
+        music_id: this.selectedTrack.id,
+        ip_timeout: this.ipTimeout,
+        track_timeout: this.trackTimeout,
       };
       this.resetRequestData();
       axios
@@ -337,6 +340,8 @@ export default {
     }
   },
   created() {
+    // Language
+    this.language = this.lang;
     // Create styles
     let rgbBg = this.hexToRgb(this.bgcolor);
     this.styleObject = {
@@ -363,7 +368,7 @@ export default {
     };
     // Button styling
     let rgbButton = this.hexToRgb(this.button_color);
-
+    //let rgbActiveButton = this.hexToRgb(this.button_color_active);
     let rgbButtonFont = this.hexToRgb(this.button_font_color);
 
     this.btnStyle = {
@@ -371,6 +376,16 @@ export default {
       "background-color": `rgb(${rgbButton.r}, ${rgbButton.g}, ${rgbButton.b})`,
       color: `rgb(${rgbButtonFont.r}, ${rgbButtonFont.g}, ${rgbButtonFont.b})`
     };
+
+   // Programmatically generate pagination button styles
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = '.pagination-v-82963a40 { padding: 15px 5px; text-align: center; font-weight: 700; }\n';
+    style.innerHTML += `.pagination-v-82963a40 a { font-weight: 700; border-radius: 0px; text-align: center; cursor: pointer; outline: none; box-sizing: border-box; border: 0; background-color: ${this.button_color}; color: ${this.button_font_color}; font-size: ${this.button_font_size}px; padding: 5px 10px; text-shadow: none; text-decoration: none; font-family: Arial, Helvetica, sans-serif; display: inline-block; margin: 3px 5px; }\n`;
+    style.innerHTML += `.pagination-v-82963a40 a.active { background-color: ${this.button_color_active}}`;
+
+    document.getElementsByTagName('head')[0].appendChild(style);
+
 
     // Modal window
     let rgbModal = this.hexToRgb(this.modal_background_color);
@@ -428,6 +443,7 @@ export default {
   display: inline-block;
 }
 
+/*
 .pagination {
   padding: 15px 5px;
   text-align: center;
@@ -455,7 +471,7 @@ export default {
 .pagination>>>a.active {
   background-color: #bdbf91;
 }
-
+*/
 .meta {
   height: 3em;
   line-height: 1em;
@@ -464,7 +480,7 @@ export default {
 
 .button {
   font-weight: 700;
-  border-radius: 2px;
+  /*border-radius: 2px;*/
   text-align: center;
   cursor: pointer;
   outline: none;
@@ -508,6 +524,7 @@ export default {
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+  display: block;
 }
 
 .success {
@@ -601,6 +618,7 @@ export default {
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
+  z-index: 9998;
 }
 
 .modal-header {
