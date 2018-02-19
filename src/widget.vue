@@ -538,10 +538,12 @@ export default {
 
 .feedback input {
   font-size: 22px;
+  width: 100%;
 }
 
 .feedback textarea {
   font-size: 22px;
+  width: 100%;
 }
 
 .modal-message {
