@@ -328,7 +328,7 @@ export default {
     loadTracks() {
       let url = `${this.apiBase}/music/?limit=${this.tracks_num}&offset=${this
         .tracks_num * this.page}&search_q=${this.search_q}&server=${this
-        .serverId || 1}&with_tags_only=true&order=${this.ordering}`;
+        .serverId || 1}&with_tags_only=true&requestable=true&order=${this.ordering}`;
 
       this.loading = true;
       axios
