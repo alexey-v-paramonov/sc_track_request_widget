@@ -536,6 +536,7 @@ export default {
   text-align: left;
 }
 
+
 .feedback input {
   font-size: 22px;
   width: 100%;
@@ -648,6 +649,19 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
   z-index: 9998;
+}
+
+@media (max-width: 1024px) {
+  .modal-container {
+    width: 90%;
+    padding: 10px 10px;
+  }
+  .feedback {
+    margin: 0px;
+  }
+  .track-info {
+    margin: 0px;
+  }
 }
 
 .modal-header {
