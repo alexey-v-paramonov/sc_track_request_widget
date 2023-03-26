@@ -234,6 +234,33 @@ export default {
           trackRequestBlockedIp:
             "Vous avez déjà fait une demande récemment, veuillez réessayer plus tard."
         },
+        de: {
+          back: "Zurück",
+          next: "Weiter",
+          search: "Suchen",
+          request: "Wünschen",
+          nothingFound: "Nichts gefunden",
+          loadError: "Beim Laden von Musik ist ein Fehler aufgetreten",
+          requestTrack: "Wünschen",
+          paginatePrev: "Zurück",
+          paginateNext: "Weiter",
+          trackrequestModalTitle: "Titel wünschen",
+          trackrequestModalSubmit: "Einreichen",
+          trackrequestModalCancel: "Abbrechen",
+          trackArtist: "Künstler",
+          trackTitle: "Titel",
+          listenerName: "Name",
+          listenerMessage: "Shoutout",
+          charactersLeft: "Verbleibende Zeichen",
+          trackRequestSuccessfull:
+            "Der Wunsch wurde erfolgreich gesendet.",
+          trackrequestModalClose: "Schließen",
+          trackRequestFailure: "Anfrage fehlgeschlagen, bitte versuchen Sie es später noch einmal.",
+          trackRequestBlocked:
+            "Dieser Titel wurde bereits vor kurzem gewünscht, bitte versuchen Sie es später noch einmal.",
+          trackRequestBlockedIp:
+            "Sie haben bereits eine Anfrage gestellt. Bitte versuchen Sie es später noch einmal."
+        },        
         ru: {
           back: "Назад",
           next: "Вперед",
