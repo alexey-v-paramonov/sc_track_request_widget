@@ -55,9 +55,9 @@
                         </div>
                         <div v-if="allow_person_and_message == 'true'" class="feedback">
                             <div><label>{{translations[language].listenerName}}:</label></div>
-                            <div><input type="text" v-model="name" @input="updateCharactersLeftName()"></div>
+                            <div><input type="text" v-model="name" @input="updateCharactersLeftName()" maxlength="255"></div>
                             <div><label>{{translations[language].listenerMessage}}:</label></div>
-                            <div><textarea v-model="message"  @input="updateCharactersLeftMessage()"></textarea></div>
+                            <div><textarea v-model="message"  @input="updateCharactersLeftMessage()" maxlength="255"></textarea></div>
                             <div>{{translations[language].charactersLeft}}: {{charactersLeft}}</div>
                         </div>
                     </div>
