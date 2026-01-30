@@ -714,6 +714,34 @@ export default {
               "Dit nummer is onlangs al aangevraagd, probeer het later opnieuw.",
             trackRequestBlockedIp:
               "U heeft onlangs al een verzoek ingediend, probeer het later opnieuw."
+          },
+          cs: {
+            back: "Zpět",
+            next: "Další",
+            search: "Hledat",
+            request: "Požadavek",
+            nothingFound: "Nic nenalezeno",
+            loadError: "Při načítání hudby došlo k chybě",
+            requestTrack: "Požadavek",
+            paginatePrev: "Zpět",
+            paginateNext: "Další",
+            trackrequestModalTitle: "Požadavek na skladbu",
+            trackrequestModalSubmit: "Odeslat",
+            trackrequestModalCancel: "Zrušit",
+            trackArtist: "Umělec",
+            trackTitle: "Název",
+            listenerName: "Vaše jméno",
+            listenerMessage: "Zpráva",
+            charactersLeft: "Zbývající znaky",
+            trackRequestSuccessfull:
+              "Váš požadavek na skladbu byl úspěšně odeslán.",
+            trackrequestModalClose: "Zavřít",
+            trackRequestFailure:
+              "Požadavek selhal, zkuste to prosím později.",
+            trackRequestBlocked:
+              "Tato skladba byla nedávno již požadována, zkuste to prosím později.",
+            trackRequestBlockedIp:
+              "Nedávno jste již odeslali požadavek, zkuste to prosím později."
           }
       },
       page: 0,
