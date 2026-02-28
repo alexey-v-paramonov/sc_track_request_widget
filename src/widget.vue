@@ -71,7 +71,7 @@
                     </div>
 
                     <div v-if="trackRequestUnsuccessfull && trackRequestBlocked" class="modal-message error">
-                            {{translations[lang].trackRequestBlocked}}
+                            {{translations[language].trackRequestBlocked}}
                     </div>
 
                     <div v-if="trackRequestUnsuccessfull && trackRequestBlockedIp" class="modal-message error">
@@ -176,12 +176,12 @@ export default {
             trackTitle: "Título",
             listenerName: "Seu nome",
             listenerMessage: "Mensagem",
-            charactersLeft: "Characteres restantes",
+            charactersLeft: "Caracteres restantes",
             trackRequestSuccessfull: "Seu pedido foi enviado com sucesso.",
             trackrequestModalClose: "Fechar",
             trackRequestFailure: "Falha no pedido, por favor tente mais tarde.",
-            trackRequestBlocked: "Esta faixa já foi pedida recentimente, por favor tente mais tarde.",
-            trackRequestBlockedIp: "Você já fez um pedido recentimente, por favor tente mais tarde.",
+            trackRequestBlocked: "Esta faixa já foi pedida recentemente, por favor tente mais tarde.",
+            trackRequestBlockedIp: "Você já fez um pedido recentemente, por favor tente mais tarde.",
         },
         pt: {
             back: "Anterior",
@@ -200,12 +200,12 @@ export default {
             trackTitle: "Título",
             listenerName: "Seu nome",
             listenerMessage: "Mensagem",
-            charactersLeft: "Characteres restantes",
+            charactersLeft: "Caracteres restantes",
             trackRequestSuccessfull: "Seu pedido foi enviado com sucesso.",
             trackrequestModalClose: "Fechar",
             trackRequestFailure: "Falha no pedido, por favor tente mais tarde.",
-            trackRequestBlocked: "Esta faixa já foi pedida recentimente, por favor tente mais tarde.",
-            trackRequestBlockedIp: "Você já fez um pedido recentimente, por favor tente mais tarde.",
+            trackRequestBlocked: "Esta faixa já foi pedida recentemente, por favor tente mais tarde.",
+            trackRequestBlockedIp: "Você já fez um pedido recentemente, por favor tente mais tarde.",
         },
         fr: {
           back: "Précédent",
@@ -278,7 +278,7 @@ export default {
           trackTitle: "Название",
           listenerName: "Представьтесь",
           listenerMessage: "Сообщение в эфир",
-          charactersLeft: "Осталось сиволов",
+          charactersLeft: "Осталось символов",
           trackRequestSuccessfull: "Ваша заявка успешно отправлена.",
           trackrequestModalClose: "Закрыть",
           trackRequestFailure: "Ошибка, попробуйте повторить позже.",
@@ -286,30 +286,6 @@ export default {
             "Этот трэк уже был заказан недавно, попробуйте повторить запрос позже.",
           trackRequestBlockedIp:
             "Вы уже заказывали трэк недавно, попробуйте повторить запрос позже."
-        },
-        fr: {
-          back: "Anterior",
-          next: "Próximo",
-          search: "Buscar",
-          request: "Pedir",
-          nothingFound: "Nada encontrado",
-          loadError: "Ocorreu um erro ao tentar carregar a música",
-          requestTrack: "Pedir",
-          paginatePrev: "Voltar",
-          paginateNext: "Avançar",
-          trackrequestModalTitle: "Pedir faixa",
-          trackrequestModalSubmit: "Enviar",
-          trackrequestModalCancel: "Cancelar",
-          trackArtist: "Artista",
-          trackTitle: "Título",
-          listenerName: "Seu nome",
-          listenerMessage: "Mensagem",
-          charactersLeft: "Characteres restantes",
-          trackRequestSuccessfull: "Seu pedido foi enviado com sucesso.",
-          trackrequestModalClose: "Fechar",
-          trackRequestFailure: "Falha no pedido, por favor tente mais tarde.",
-          trackRequestBlocked: "Esta faixa já foi pedida recentimente, por favor tente mais tarde.",
-          trackRequestBlockedIp: "Você já fez um pedido recentimente, por favor tente mais tarde.",
         },
         ua: {
           back: "Назад",
